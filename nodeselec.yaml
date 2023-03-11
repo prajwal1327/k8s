@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: pod-5
+spec:
+  containers:
+    - image: prajwal1327/mytomcat:1.1.6
+      name: tomcat
+  nodeSelector:
+    rishabh: "prajwal"

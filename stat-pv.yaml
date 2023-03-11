@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jenkins-root-volume
+  labels:
+    type: aws-ebs-volume
+spec:
+  storageClassName: ""
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  awsElasticBlockStore:                                                                                                                            
+    volumeID: vol-0827d76f9225d4df2
+    fsType: ext4	

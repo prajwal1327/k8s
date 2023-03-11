@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: tomcat
+spec:
+  replicas: 3
+  selector:
+    matchLabels: 
+      app: tomcat
+  template:
+    metadata:
+      name: tomcat-nginx
+      labels:
+        app: tomcat
+    spec:
+      containers:
+        - name: tomcat
+          image: prajwal1327/mytomcat:1.1.6
+        - name: nginx
+          image: nginx:1.14.2
+      tolerations:
+        - key: "prajwal"
+          operator: "Equal"
+          value: "true"
+          effect: "NoSchedule"    
+    

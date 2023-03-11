@@ -1,0 +1,52 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: stable
+    meta.helm.sh/release-namespace: default
+  creationTimestamp: "2023-02-16T11:16:02Z"
+  finalizers:
+  - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    app: kube-prometheus-stack-prometheus
+    app.kubernetes.io/instance: stable
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: kube-prometheus-stack
+    app.kubernetes.io/version: 45.1.0
+    chart: kube-prometheus-stack-45.1.0
+    heritage: Helm
+    release: stable
+    self-monitor: "true"
+  name: stable-kube-prometheus-sta-prometheus
+  namespace: default
+  resourceVersion: "252074"
+  uid: cb7b5751-88ca-499a-a974-f899d7427528
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 10.100.196.148
+  clusterIPs:
+  - 10.100.196.148
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http-web
+    nodePort: 31942
+    port: 9090
+    protocol: TCP
+    targetPort: 9090
+  selector:
+    app.kubernetes.io/name: prometheus
+    prometheus: stable-kube-prometheus-sta-prometheus
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - hostname: acb7b575188ca499aa974f899d742752-630357212.ap-northeast-1.elb.amazonaws.com

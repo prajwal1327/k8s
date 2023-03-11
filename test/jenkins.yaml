@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins
+  labels:
+    app: jenkins
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins
+  template:
+    metadata:
+      name: mount-jenkins
+      labels:
+        app : jenkins
+    spec:
+      volumes:
+      - name: "jenkins-vol"
+        persistentVolumeClaim:
+          claimName: task-pv-claim
+      containers:
+      - name: jenkins
+        image: jenkins/jenkins:lts
+        volumeMounts:
+          - name: "jenkins-vol"
+            mountPath: "/var/jenkins_home"
+
+
